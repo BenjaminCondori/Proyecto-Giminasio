@@ -12,55 +12,12 @@
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
+    @livewireStyles
 </head>
 
 <body class="antialiased">
 
-    <!-- Begin page -->
-    <div id="wrapper">
-
-        @include('plantillas.navbar')
-
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="left-side-menu">
-
-            <div class="slimscroll-menu">
-
-                <!--- Sidemenu -->
-                <div id="sidebar-menu">
-
-                    @include('plantillas.sidebar')
-
-                </div>
-                <!-- End Sidebar -->
-
-                <div class="clearfix"></div>
-
-            </div>
-            <!-- Sidebar -left -->
-
-        </div>
-        <!-- Left Sidebar End -->
-
-        <!-- ========================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ========================================================== -->
-
-        <div class="content-page">
-            <div id="content">
-                @include('contenido-dashboard.dashboard')
-            </div>
-
-            @include('plantillas.footer')
-
-        </div>
-
-        <!-- ========================================================== -->
-        <!-- End Page content -->
-        <!-- ========================================================== -->
-
-    </div>
-    <!-- END wrapper -->
+    {{ $slot }}
 
     <script src="assets/js/vendor.min.js"></script>
     <script src="assets/js/app.min.js"></script>
@@ -91,6 +48,8 @@
             });
         });
     </script>
+
+    @livewireScripts
 
 </body>
 
