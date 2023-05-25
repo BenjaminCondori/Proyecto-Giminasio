@@ -14,7 +14,7 @@
             </div>
         </form>
 
-        @livewire('administrativo.create')
+        @livewire('entrenador.create')
     </div>
 
     <div class="table-responsive">
@@ -26,24 +26,24 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
-                    <th>Cargo</th>
+                    <th>Especialidad</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($administrativos as $administrativo)
+                @foreach ($entrenadores as $entrenador)
                 <tr class="text-nowrap">
-                    <th scope="row" class="align-middle">{{ $administrativo->id }}</th>
-                    <td class="align-middle">{{ $administrativo->ci }}</td>
-                    <td class="align-middle">{{ $administrativo->nombres }}</td>
-                    <td class="align-middle">{{ $administrativo->apellidos }}</td>
-                    <td class="align-middle">{{ $administrativo->email }}</td>
+                    <th scope="row" class="align-middle">{{ $entrenador->id }}</th>
+                    <td class="align-middle">{{ $entrenador->ci }}</td>
+                    <td class="align-middle">{{ $entrenador->nombres }}</td>
+                    <td class="align-middle">{{ $entrenador->apellidos }}</td>
+                    <td class="align-middle">{{ $entrenador->email }}</td>
                     <td class="align-middle">{{ 
-                    $administrativo->administrativos()->whereIn('cargo', ['administrador', 'recepcionista'])->value('cargo')
+                    $entrenador->entrenadores()->value('especialidad');
                     }}</td>
                     <td class="align-middle d-flex">
                         <button class="btn btn-sm btn-warning">Ver</button>
-                        @livewire('administrativo.edit', ['administrativo' => $administrativo], key($administrativo->id))
+                        @livewire('entrenador.edit', ['entrenador' => $entrenador], key($entrenador->id))
                         <button type="button" class="btn btn-sm btn-danger" onclick="mostrarAlertaConfirmacion()">Eliminar</button>
                     </td>
                 </tr>
@@ -53,3 +53,4 @@
     </div>
 
 </div>
+

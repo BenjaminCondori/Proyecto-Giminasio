@@ -15,4 +15,8 @@ class Empleado extends Model
         return $this->hasMany(Administrativo::class, 'id');
     }
 
-}
+    public function entrenadores(): HasMany {
+        return $this->hasMany(Entrenador::class, 'id');
+    }
+
+} 

@@ -35,17 +35,10 @@ Route::get('/test-query', function () {
         //     $query->whereIn('cargo', ['administrador', 'recepcionista']);
         // })->get();
 
-        $empleado = Empleado::find('2200000001');
-        $administrativo = $empleado->administrativos()->whereIn('cargo', ['administrador', 'recepcionista'])->first();
+        $empleado = Empleado::findOrFail('2200000006');
+        $entrenador = $empleado->entrenadores()->value('especialidad');
 
-        if ($administrativo) {
-            $cargo = $administrativo->cargo;
-            // Realiza alguna operación o muestra el cargo en la vista
-        } else {
-            // El empleado no tiene un cargo de administrativo
-        }
-
-        return $administrativo;
+        return $entrenador;
     } catch (\Exception $e) {
         return "Error al consultar la base de datos: " . $e->getMessage();
     }

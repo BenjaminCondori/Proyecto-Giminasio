@@ -1,12 +1,12 @@
 <div>
-    <button type="button" class="btn btn-sm btn-primary ml-1 mr-1" data-toggle="modal" data-target="#modal-edit">Editar</button>
+    <button type="button" class="btn btn-sm btn-primary ml-1 mr-1" data-toggle="modal" data-target="#modal-edit2">Editar</button>
 
-    <div id="modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div id="modal-edit2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark">
-                    <h4 class="modal-title text-light">Editar administrativo</h4>
+                    <h4 class="modal-title text-light">Editar entrenador</h4>
                     <button type="button" class="close text-light" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body p-4">
@@ -14,13 +14,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Nombres</label>
-                                
-                                <input type="text" wire:model="administrativo.nombres" class="form-control" placeholder="John"
-                                    required>
+                                <input type="text" wire:model="nombre" class="form-control" placeholder="John" required>
                                 <div class="alert alert-info d-none fade show">
-                                    @error('nombre')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
+                                    @error('nombre') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -86,15 +82,14 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <label>Cargo</label>
-                                <select class="form-control" wire:model="cargo">
-                                    <option>Administrador</option>
-                                    <option>Recepcionista</option>
-                                </select>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Especialidad</label>
+                                    <input type="text" wire:model="especialidad" class="form-control"
+                                        placeholder="Entrenador de aparatos">
+                                </div>
                             </div>
-                        </div>
+
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label>Turno</label>
@@ -128,10 +123,12 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancelar</button>
                     <button class="btn btn-primary waves-effect waves-light" wire:click="guardar"
-                        wire:loading.attr="disabled" type="button">Actualizar</button>
+                        wire:loading.attr="disabled" type="button">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+
+

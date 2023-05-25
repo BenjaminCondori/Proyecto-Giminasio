@@ -14,6 +14,6 @@ class administrativo extends Model
     public function empleado(): BelongsTo
     {
         return $this->belongsTo(Empleado::class, 'id');
-    }
+    } 
 
 }

@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\Administrativo;
+namespace App\Http\Livewire\Entrenador;
 
 use App\Models\Empleado;
 use Livewire\Component;
 
 class Edit extends Component
 {
-    public $administrativo;
+    public $entrenador;
 
     public function mount(Empleado $empleado) {
-        $this->administrativo = $empleado;
+        $this->entrenador = $empleado;
     }
 
     public function render()
     {
-        return view('livewire.administrativo.edit');
+        return view('livewire.entrenador.edit');
     }
+
 }

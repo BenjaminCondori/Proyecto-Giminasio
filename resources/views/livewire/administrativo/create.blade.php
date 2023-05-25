@@ -1,11 +1,11 @@
 <div>
     <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
-        data-target="#con-close-modal">
+        data-target="#modal-create">
         <i class="fas fa-plus-circle"></i>&nbsp;
         Nuevo Administrativo
     </button>
 
-    <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div id="modal-create" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -17,45 +17,50 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="field-1" class="control-label">Nombres</label>
-                                <input type="text" class="form-control" id="field-1" placeholder="John">
+                                <label class="control-label">Nombres</label>
+                                <input type="text" wire:model="nombre" class="form-control" placeholder="John" required>
+                                <div class="alert alert-info d-none fade show">
+                                    @error('nombre') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="field-2" class="control-label">Apellidos</label>
-                                <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                                <label class="control-label">Apellidos</label>
+                                <input type="text" wire:model="apellido" class="form-control" placeholder="Doe">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="field-3" class="control-label">Email</label>
-                                <input type="text" class="form-control" id="field-3" placeholder="johndoe@gmail.com">
+                                <label class="control-label">Email</label>
+                                <input type="email" wire:model="email"
+                                    class="form-control"placeholder="johndoe@gmail.com">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="field-3" class="control-label">Dirección</label>
-                                <input type="text" class="form-control" id="field-3" placeholder="Av. Busch">
+                                <label class="control-label">Dirección</label>
+                                <input type="text" wire:model="direccion" class="form-control"
+                                    placeholder="Av. Busch">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="example-number">Cédula de identidad</label>
-                                <input class="form-control" id="example-number" type="number" name="number"
+                                <label>Cédula de identidad</label>
+                                <input class="form-control" wire:model="ci" type="number" name="number"
                                     placeholder="1234567">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="example-number2">Número telefónico</label>
-                                <input class="form-control" id="example-number2" type="number" name="number"
+                                <label>Número telefónico</label>
+                                <input class="form-control" wire:model="telefono" type="number" name="number"
                                     placeholder="12345678">
                             </div>
                         </div>
@@ -63,17 +68,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="example-date">Fecha de nacimiento</label>
-                                <input class="form-control" id="example-date" type="date" name="date">
+                                <label>Fecha de nacimiento</label>
+                                <input class="form-control" wire:model="fecha_nacimiento" type="date" name="date">
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mb-0">
+                            <div class="form-group mb-3">
                                 <label>Seleccionar imagen</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile04">
-                                        <label class="custom-file-label" for="inputGroupFile04">Elija una foto</label>
+                                        <input type="file" wire:model="imagen" class="custom-file-input">
+                                        <label class="custom-file-label">Elija una foto</label>
                                     </div>
                                 </div>
                             </div>
@@ -83,8 +88,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="example-select">Cargo</label>
-                                <select class="form-control" id="example-select">
+                                <label>Cargo</label>
+                                <select class="form-control" wire:model="cargo">
                                     <option>Administrador</option>
                                     <option>Recepcionista</option>
                                 </select>
@@ -92,8 +97,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="example-select">Turno</label>
-                                <select class="form-control" id="example-select">
+                                <label>Turno</label>
+                                <select class="form-control" wire:model="turno">
                                     <option>Mañana</option>
                                     <option>Tarde</option>
                                 </select>
@@ -104,16 +109,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-0">
-                                <label>Sexo</label>
+                                <label>Género</label>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio"
-                                        class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Femenino</label>
+                                    <input type="radio" name="customRadio" class="custom-control-input"
+                                        id="customCheck1" wire:model="genero">
+                                    <label for="customCheck1" class="custom-control-label">Femenino</label>
                                 </div>
                                 <div class="custom-control custom-radio mt-1">
-                                    <input type="radio" id="customRadio2" name="customRadio"
-                                        class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Masculino</label>
+                                    <input type="radio" name="customRadio" class="custom-control-input"
+                                        id="customCheck2" wire:model="sexo">
+                                    <label for="customCheck2" class="custom-control-label">Masculino</label>
                                 </div>
                             </div>
                         </div>
@@ -122,10 +127,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary waves-effect waves-light">Guardar</button>
+                    <button class="btn btn-primary waves-effect waves-light" wire:click="guardar"
+                        wire:loading.attr="disabled" type="button">Guardar</button>
                 </div>
             </div>
         </div>
-    </div><!-- /.modal -->
+    </div>
 
 </div>

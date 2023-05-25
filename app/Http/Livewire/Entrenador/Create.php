@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Administrativo;
+namespace App\Http\Livewire\Entrenador;
 
 use App\Models\Empleado;
 use Livewire\Component;
@@ -10,7 +10,7 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $id_empleado, $ci, $nombre, $apellido, $email, $direccion, $telefono, $fecha_nacimiento, $cargo, $turno, $imagen, $genero;
+    public $id_empleado, $ci, $nombre, $apellido, $email, $direccion, $telefono, $fecha_nacimiento, $especialidad, $turno, $imagen, $genero;
 
     protected $rules = [
         'ci' => 'required|max:10',
@@ -18,6 +18,7 @@ class Create extends Component
         'apellido' => 'required|max:50',
         'email' => 'required|email|max:100',
         'direccion' => 'required|max:80',
+        'especialidad' => 'required|max:50',
         'telefono' => 'required|max:10',
         'imagen' => 'required|image|max:2048'
     ];
@@ -48,16 +49,14 @@ class Create extends Component
             'email' => $this->email,
             'genero' => $this->genero,
             'turno' => $this->turno,
-            'tipo_empleado' => 'A',
-            'id_usuario' => '11'
+            'tipo_empleado' => 'E',
+            'id_usuario' => '12'
         ]);
 
     }
 
     public function render()
     {
-        return view('livewire.administrativo.create');
+        return view('livewire.entrenador.create');
     }
-
-
 }
